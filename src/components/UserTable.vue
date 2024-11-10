@@ -48,7 +48,7 @@
 import { mapState } from "vuex";
 
 export default {
-  name: "UserTable",
+  name: "UmsUserTable",
   data() {
     return {
       allSelected: false,

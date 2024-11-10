@@ -9,7 +9,7 @@
               <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <div>
                   <div class="w-full mb-3">
-                    <input-component
+                    <ums-input
                       label="First Name"
                       id="grid-first-name"
                       placeholder="John"
@@ -17,7 +17,7 @@
                     />
                   </div>
                   <div class="w-full mb-3">
-                    <input-component
+                    <ums-input
                       label="Last Name"
                       id="grid-last-name"
                       placeholder="Doe"
@@ -25,7 +25,7 @@
                     />
                   </div>
                   <div class="w-full mb-3">
-                    <input-component
+                    <ums-input
                       label="Date of Birth"
                       id="grid-date"
                       type="date"
@@ -36,7 +36,7 @@
                 </div>
                 <div>
                   <div class="w-full mb-3">
-                    <input-component
+                    <ums-input
                       label="Favorite Quote"
                       id="grid-quote"
                       placeholder="Asta la vista, baby!"
@@ -45,7 +45,7 @@
                   </div>
 
                   <div class="w-full mb-3">
-                    <drop-down
+                    <ums-drop-down
                       id="profession"
                       label="Profession"
                       :options="professions"
@@ -54,7 +54,7 @@
                   </div>
 
                   <div class="w-full mb-3">
-                    <drop-down
+                    <ums-drop-down
                       id="country"
                       label="Country"
                       :options="countries"
@@ -66,12 +66,12 @@
             </form>
           </div>
           <div class="modal-footer flex justify-between">
-            <button-component
+            <ums-button
               :on-click="() => $emit('close')"
               :button-text="'Cancel'"
               variant="passive"
             />
-            <button-component
+            <ums-button
               :on-click="addRow"
               :button-text="'Add User'"
               :isDisabled="!valid"
@@ -79,7 +79,7 @@
               <template v-slot:leading>
                 <img src="@assets/icons/user-plus.svg" />
               </template>
-            </button-component>
+            </ums-button>
           </div>
         </div>
       </div>
@@ -89,12 +89,12 @@
 
 <script>
 import { mapState, mapActions, mapMutations } from "vuex";
-import DropDown from "@/DropDown";
-import InputComponent from "@/Input";
-import ButtonComponent from "@/Button";
+import UmsDropDown from "@/DropDown";
+import UmsInput from "@/Input";
+import UmsButton from "@/Button";
 
 export default {
-  name: "AddUserModal",
+  name: "UmsAddUserModal",
   data() {
     return {
       user: {
@@ -106,9 +106,9 @@ export default {
     };
   },
   components: {
-    DropDown,
-    ButtonComponent,
-    InputComponent,
+    UmsDropDown,
+    UmsButton,
+    UmsInput,
   },
   computed: {
     valid: function () {

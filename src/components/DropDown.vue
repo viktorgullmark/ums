@@ -37,7 +37,7 @@
 
 <script>
 export default {
-  name: "DropDown",
+  name: "UmsDropDown",
   props: {
     id: {
       type: String,

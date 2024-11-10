@@ -1,37 +1,34 @@
 <template>
   <div class="flex gap-3">
-    <button-component
-      :on-click="() => (showModal = true)"
-      :button-text="'Add User'"
-    >
+    <ums-button :on-click="() => (showModal = true)" :button-text="'Add User'">
       <template v-slot:leading>
         <img src="@assets/icons/user-plus.svg" /> </template
-    ></button-component>
-    <button-component
+    ></ums-button>
+    <ums-button
       :on-click="removeSelected"
       :button-text="'Remove Users'"
       :isDisabled="selected.length === 0"
       variant="danger"
     >
       <template v-slot:leading> <img src="@assets/icons/trash.svg" /> </template
-    ></button-component>
-    <add-user-modal
+    ></ums-button>
+    <ums-add-user-modal
       v-if="showModal"
       @close="showModal = false"
-    ></add-user-modal>
+    ></ums-add-user-modal>
   </div>
 </template>
 
 <script>
-import ButtonComponent from "@/Button.vue";
-import AddUserModal from "@/AddUserModal.vue";
+import UmsButton from "@/Button.vue";
+import UmsAddUserModal from "@/AddUserModal.vue";
 import { mapActions } from "vuex";
 
 export default {
-  name: "App",
+  name: "UmsTableToolbar",
   components: {
-    AddUserModal,
-    ButtonComponent,
+    UmsAddUserModal,
+    UmsButton,
   },
   props: {
     selected: {

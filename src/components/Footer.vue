@@ -7,3 +7,9 @@
     </span>
   </footer>
 </template>
+
+<script>
+export default {
+  name: "UmsFooter",
+};
+</script>

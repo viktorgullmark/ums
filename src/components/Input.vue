@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: "Input",
+  name: "UmsInput",
   props: {
     id: {
       type: String,
