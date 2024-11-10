@@ -1,11 +1,14 @@
 <template>
   <div>
     <nav-bar title="User Management System™" />
-    <div
-      class="mt-20 max-w-screen-xl flex flex-wrap items-center gap-4 mx-auto p-4"
-    >
-      <table-toolbar :selected="selected" @removed="selected = value" />
-      <user-table @selected="(value) => (selected = value)" />
+    <div class="p-2">
+      <div
+        class="mt-20 max-w-screen-xl flex flex-wrap items-center gap-4 mx-auto p-4"
+      >
+        <table-toolbar :selected="selected" @removed="selected = value" />
+        <user-table @selected="(value) => (selected = value)" />
+      </div>
+      <footer-component />
     </div>
   </div>
 </template>
@@ -14,6 +17,7 @@
 import UserTable from "@/UserTable.vue";
 import NavBar from "@/NavBar.vue";
 import TableToolbar from "@/TableToolbar.vue";
+import FooterComponent from "@/Footer.vue";
 
 export default {
   name: "App",
@@ -21,6 +25,7 @@ export default {
     TableToolbar,
     NavBar,
     UserTable,
+    FooterComponent,
   },
   data() {
     return {
