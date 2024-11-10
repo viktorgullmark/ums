@@ -4,23 +4,23 @@
     <div
       class="mt-20 max-w-screen-xl flex flex-wrap items-center gap-4 mx-auto p-4"
     >
-      <list-toolbar :selected="selected" @removed="selected = value" />
-      <user-list @selected="(value) => (selected = value)" />
+      <table-toolbar :selected="selected" @removed="selected = value" />
+      <user-table @selected="(value) => (selected = value)" />
     </div>
   </div>
 </template>
 
 <script>
-import UserList from "./components/UserList.vue";
+import UserTable from "./components/UserTable.vue";
 import NavBar from "./components/NavBar.vue";
-import ListToolbar from "./components/ListToolbar.vue";
+import TableToolbar from "./components/TableToolbar.vue";
 
 export default {
   name: "App",
   components: {
-    ListToolbar,
+    TableToolbar,
     NavBar,
-    UserList,
+    UserTable,
   },
   data() {
     return {
