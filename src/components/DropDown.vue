@@ -44,10 +44,7 @@ export default {
     },
     options: {
       type: Array,
-      default: () => [
-        { value: 1, text: "Option 1" },
-        { value: 2, text: "Option 2" },
-      ],
+      default: () => [],
     },
     label: {
       type: String,

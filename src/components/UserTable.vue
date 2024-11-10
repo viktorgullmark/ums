@@ -55,7 +55,6 @@ export default {
       allSelected: false,
     };
   },
-
   computed: {
     ...mapState({
       users: (state) => state.userModule.users,
