@@ -1,0 +1,229 @@
+<template>
+  <transition name="modal">
+    <div class="modal-mask">
+      <div class="modal-wrapper">
+        <div class="modal-container">
+          <div class="modal-header">Add New User</div>
+          <div class="modal-body">
+            <form class="mx-auto my-10">
+              <div class="grid grid-cols-1 md:grid-cols-2">
+                <div>
+                  <div class="w-full px-3 mb-6 md:mb-0">
+                    <label
+                      class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                      for="grid-first-name"
+                      v-text="'First Name'"
+                    />
+                    <input
+                      class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                      id="grid-first-name"
+                      type="text"
+                      placeholder="John"
+                      v-model="user.firstName"
+                    />
+                  </div>
+                  <div class="w-full px-3 mb-6 md:mb-0">
+                    <label
+                      class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                      for="grid-last-name"
+                      v-text="'Last Name'"
+                    />
+                    <input
+                      class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                      id="grid-last-name"
+                      type="text"
+                      placeholder="Doe"
+                      v-model="user.lastName"
+                    />
+                  </div>
+                  <div class="w-full px-3 mb-6 md:mb-0">
+                    <label
+                      class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                      for="grid-date"
+                      v-text="'Date of Birth'"
+                    />
+                    <input
+                      class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                      id="grid-date"
+                      type="date"
+                      v-model="user.birthDate"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <div class="w-full px-3 mb-6 md:mb-0">
+                    <label
+                      class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                      for="grid-quote"
+                      v-text="'Favorite Quote'"
+                    />
+                    <input
+                      class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                      id="grid-quote"
+                      type="text"
+                      placeholder="Asta la vista, baby!"
+                      v-model="user.quote"
+                    />
+                  </div>
+
+                  <div class="w-full px-3 mb-6 md:mb-0">
+                    <drop-down
+                      label="Profession"
+                      :options="professions"
+                      :changeSelect="selectProfession"
+                    />
+                  </div>
+
+                  <div class="w-full px-3 mb-6">
+                    <drop-down
+                      label="Country"
+                      :options="countries"
+                      :changeSelect="selectCountry"
+                    />
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer flex justify-between">
+            <button-component
+              :on-click="() => $emit('close')"
+              :button-text="'Cancel'"
+              variant="passive"
+            />
+            <button-component
+              :on-click="addRow"
+              :button-text="'Add User'"
+              :isDisabled="!valid"
+            >
+              <template v-slot:leading>
+                <img src="./../assets/icons/user-plus.svg" />
+              </template>
+            </button-component>
+          </div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</template>
+
+<script>
+import { mapState, mapActions, mapMutations } from "vuex";
+import DropDown from "./DropDown";
+import ButtonComponent from "./Button";
+
+export default {
+  name: "AddUserModal",
+  data() {
+    return {
+      user: {
+        firstName: "",
+        lastName: "",
+        birthDate: null,
+        quote: "",
+      },
+    };
+  },
+  components: {
+    DropDown,
+    ButtonComponent,
+  },
+  computed: {
+    valid: function () {
+      return (
+        this.user &&
+        this.user.firstName.length > 0 &&
+        this.user.lastName.length > 0 &&
+        this.user.birthDate
+      );
+    },
+    ...mapState({
+      professions: (state) => state.professionModule.professions,
+      countries: (state) => state.countryModule.countries,
+    }),
+  },
+  methods: {
+    ...mapMutations({
+      setProfession: "SET_PROFESSION",
+      setCountry: "SET_COUNTRY",
+    }),
+    ...mapActions(["addUser", "setProfession", "setCountry"]),
+    addRow() {
+      this.addUser(this.user);
+      this.$emit("close");
+    },
+    selectProfession(profession) {
+      this.setProfession(profession);
+    },
+    selectCountry(country) {
+      this.setCountry(country);
+    },
+  },
+};
+</script>
+
+<style scoped>
+.modal-mask {
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: table;
+  transition: opacity 0.3s ease;
+}
+
+.modal-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.modal-container {
+  max-width: 800px;
+  margin: 0px auto;
+  padding: 20px 30px;
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+  transition: all 0.3s ease;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.modal-header h3 {
+  margin-top: 0;
+  color: #42b983;
+}
+
+.modal-body {
+  margin: 20px 0;
+}
+
+.modal-default-button {
+  float: right;
+}
+
+/*
+ * The following styles are auto-applied to elements with
+ * transition="modal" when their visibility is toggled
+ * by Vue.js.
+ *
+ * You can easily play with the modal transition by editing
+ * these styles.
+ */
+
+.modal-enter {
+  opacity: 0;
+}
+
+.modal-leave-active {
+  opacity: 0;
+}
+
+.modal-enter .modal-container,
+.modal-leave-active .modal-container {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+</style>
