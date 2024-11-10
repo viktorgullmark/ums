@@ -14,10 +14,25 @@
         >
           <li>
             <a
-              href="#"
+              href="/"
               class="block py-2 px-3 text-white md:p-0"
               aria-current="page"
               >Users</a
+            >
+          </li>
+          <li>
+            <a href="/some" class="disabled block py-2 px-3 text-white md:p-0"
+              >Some</a
+            >
+          </li>
+          <li>
+            <a href="/other" class="disabled block py-2 px-3 text-white md:p-0"
+              >Other</a
+            >
+          </li>
+          <li>
+            <a href="/links" class="disabled block py-2 px-3 text-white md:p-0"
+              >Links</a
             >
           </li>
         </ul>
@@ -46,5 +61,9 @@ nav {
     rgba(0, 50, 51, 1) 0%,
     rgba(4, 129, 124, 1) 100%
   );
+}
+a.disabled {
+  pointer-events: none;
+  opacity: 50%;
 }
 </style>
