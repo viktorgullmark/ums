@@ -52,7 +52,7 @@ export default {
     },
     changeSelect: {
       type: Function,
-      defualt: () => {},
+      default: () => {},
     },
   },
 };
