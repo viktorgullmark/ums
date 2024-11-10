@@ -3,7 +3,7 @@
     <nav-bar title="User Management System™" />
     <div class="p-2">
       <div
-        class="mt-20 max-w-screen-xl flex flex-wrap items-center gap-4 mx-auto p-4"
+        class="mt-20 max-w-screen-xl flex flex-wrap items-center gap-4 mx-auto"
       >
         <table-toolbar :selected="selected" @removed="selected = value" />
         <user-table @selected="(value) => (selected = value)" />
