@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState } from "vuex";
 
 export default {
   name: "UserList",
@@ -63,10 +63,6 @@ export default {
     }),
   },
   methods: {
-    ...mapActions(["removeUser"]),
-    removeRow(user) {
-      this.removeUser(user);
-    },
     userAge(user) {
       const birthDate = user.birthDate;
       return new Date().getUTCFullYear() - new Date(birthDate).getUTCFullYear();
