@@ -11,8 +11,12 @@
         class="bg-gray-50 appearance-none border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3"
         @change="changeSelect($event.target.value)"
       >
-        <option :value="options[0].value" v-text="options[0].text" />
-        <option :value="options[1].value" v-text="options[1].text" />
+        <option
+          v-for="option in options"
+          :value="option.value"
+          v-text="option.text"
+          :key="option.value"
+        />
       </select>
       <div
         class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
