@@ -7,7 +7,7 @@
     <ums-button
       :on-click="removeSelected"
       :button-text="'Remove Users'"
-      :isDisabled="selected.length === 0"
+      :isDisabled="selectedUserIds.length === 0"
       variant="danger"
     >
       <template v-slot:leading> <img src="@assets/icons/trash.svg" /> </template
@@ -22,7 +22,7 @@
 <script>
 import UmsButton from "@/Button.vue";
 import UmsAddUserModal from "@/AddUserModal.vue";
-import { mapActions } from "vuex";
+import { mapActions, mapState } from "vuex";
 
 export default {
   name: "UmsTableToolbar",
@@ -30,27 +30,26 @@ export default {
     UmsAddUserModal,
     UmsButton,
   },
-  props: {
-    selected: {
-      type: Array,
-      default: () => [],
-    },
-  },
   data() {
     return {
       showModal: false,
     };
   },
+  computed: {
+    ...mapState({
+      selectedUserIds: (state) => state.userModule.selectedUserIds,
+    }),
+  },
   methods: {
-    ...mapActions(["removeUsers"]),
+    ...mapActions(["removeUsers", "setSelectedUsers"]),
     removeSelected() {
       if (
         confirm(
-          `Are you sure you want to delete the selected ${this.selected.length} user(s)?`
+          `Are you sure you want to delete the selected ${this.selectedUserIds.length} user(s)?`
         )
       ) {
-        this.removeUsers(this.selected);
-        this.selected = [];
+        this.removeUsers(this.selectedUserIds);
+        this.setSelectedUsers([]);
       }
     },
   },

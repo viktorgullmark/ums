@@ -46,23 +46,34 @@
 
 <script>
 import { mapState } from "vuex";
+import { mapActions } from "vuex/dist/vuex.common.js";
 
 export default {
   name: "UmsUserTable",
   data() {
     return {
       allSelected: false,
-      selected: [],
     };
   },
+
   computed: {
     ...mapState({
       users: (state) => state.userModule.users,
+      selectedUserIds: (state) => state.userModule.selectedUserIds,
       professions: (state) => state.professionModule.professions,
       countries: (state) => state.countryModule.countries,
     }),
+    selected: {
+      get() {
+        return this.selectedUserIds;
+      },
+      set(value) {
+        this.setSelectedUsers(value);
+      },
+    },
   },
   methods: {
+    ...mapActions(["setSelectedUsers"]),
     userAge(user) {
       const birthDate = user.birthDate;
       return new Date().getUTCFullYear() - new Date(birthDate).getUTCFullYear();
