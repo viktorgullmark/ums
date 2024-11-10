@@ -47,8 +47,14 @@ export default {
   methods: {
     ...mapActions(["removeUsers"]),
     removeSelected() {
-      this.removeUsers(this.selected);
-      this.selected = [];
+      if (
+        confirm(
+          `Are you sure you want to delete the selected ${this.selected.length} user(s)?`
+        )
+      ) {
+        this.removeUsers(this.selected);
+        this.selected = [];
+      }
     },
   },
 };
