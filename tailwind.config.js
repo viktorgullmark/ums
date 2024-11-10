@@ -2,6 +2,7 @@ module.exports = {
   purge: [],
   theme: {
     extend: {
+      backgroundColor: ["disabled"],
       colors: {
         passive: {
           50: "#f7f7f7",
