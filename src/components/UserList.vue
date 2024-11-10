@@ -17,8 +17,14 @@
         />
         <td class="border px-4 py-2" v-text="user.birthDate" />
         <td class="border px-4 py-2" v-text="userAge(user)" />
-        <td class="border px-4 py-2" v-text="user.profession_id" />
-        <td class="border px-4 py-2" v-text="user.country_id" />
+        <td
+          class="border px-4 py-2"
+          v-text="getProfessionNameById(user.profession_id)"
+        />
+        <td
+          class="border px-4 py-2"
+          v-text="getCountryNameById(user.country_id)"
+        />
         <td class="border px-4 py-2" v-text="user.quote" />
         <td class="px-4 py-2">
           <button-component
@@ -34,40 +40,48 @@
 
 <script>
 // import User from './User';
-import { mapState, mapActions } from 'vuex'
-import ButtonComponent from './Button.vue';
+import { mapState, mapActions } from "vuex";
+import ButtonComponent from "./Button.vue";
 
 export default {
-  name: 'UserList',
+  name: "UserList",
   components: {
     ButtonComponent,
   },
   data() {
     return {
-      selected: []
+      selected: [],
     };
   },
   computed: {
     ...mapState({
-        users: state => state.userModule.users,
-        professions: state => state.professionModule.professions,
+      users: (state) => state.userModule.users,
+      professions: (state) => state.professionModule.professions,
+      countries: (state) => state.countryModule.countries,
     }),
   },
   methods: {
-    ...mapActions([
-      'removeUser',
-    ]),
+    ...mapActions(["removeUser"]),
     removeRow(user) {
       this.removeUser(user);
     },
     userAge(user) {
       const birthDate = user.birthDate;
-      const todaysDate = Date.now();
-      const birthDateInMilliseconds = (new Date(birthDate)).getTime();
-      const ageInMilliSeconds;
-      const age = (new Date()).getUTCFullYear() - 1970;
-      return age;
+      return new Date().getUTCFullYear() - new Date(birthDate).getUTCFullYear();
+    },
+    getProfessionNameById(id) {
+      console.log("professions", this.professions);
+      const profession = this.professions.find(
+        (profession) => profession.value === id
+      );
+      console.log("profession", profession);
+      return profession ? profession.text : "";
+    },
+    getCountryNameById(id) {
+      console.log("countries", this.countries, id);
+      const country = this.countries.find((country) => country.value === id);
+      return country ? country.text : "";
     },
   },
-}
+};
 </script>
