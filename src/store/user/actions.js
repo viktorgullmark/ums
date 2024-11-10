@@ -6,6 +6,13 @@ const actions = {
       country_id: rootState.countryModule.selectedCountryId,
     });
   },
+  updateUser({ commit, rootState }, user) {
+    commit("UPDATE_USER", {
+      ...user,
+      profession_id: rootState.professionModule.selectedProfessionId,
+      country_id: rootState.countryModule.selectedCountryId,
+    });
+  },
   removeUsers({ commit }, userIds) {
     commit("REMOVE_USERS", userIds);
   },

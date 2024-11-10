@@ -1,8 +1,19 @@
 <template>
   <div class="flex gap-3">
-    <ums-button :on-click="() => (showModal = true)" :button-text="'Add User'">
+    <ums-button
+      :on-click="() => (showAddModal = true)"
+      :button-text="'Add User'"
+    >
       <template v-slot:leading>
         <img src="@assets/icons/user-plus.svg" /> </template
+    ></ums-button>
+    <ums-button
+      :on-click="() => (showEditModal = true)"
+      :button-text="'Edit User'"
+      :isDisabled="selectedUserIds.length !== 1"
+    >
+      <template v-slot:leading>
+        <img src="@assets/icons/pencil-square.svg" /> </template
     ></ums-button>
     <ums-button
       :on-click="removeSelected"
@@ -12,32 +23,44 @@
     >
       <template v-slot:leading> <img src="@assets/icons/trash.svg" /> </template
     ></ums-button>
-    <ums-add-user-modal
-      v-if="showModal"
-      @close="showModal = false"
-    ></ums-add-user-modal>
+    <ums-add-edit-user-modal
+      v-if="showAddModal"
+      @close="showAddModal = false"
+    />
+    <ums-add-edit-user-modal
+      v-if="showEditModal"
+      @close="showEditModal = false"
+      :initialUser="selectedUser"
+      edit
+    />
   </div>
 </template>
 
 <script>
 import UmsButton from "@/Button.vue";
-import UmsAddUserModal from "@/AddUserModal.vue";
+import UmsAddEditUserModal from "@/AddEditUserModal.vue";
 import { mapActions, mapState } from "vuex";
 
 export default {
   name: "UmsTableToolbar",
   components: {
-    UmsAddUserModal,
+    UmsAddEditUserModal,
     UmsButton,
   },
   data() {
     return {
-      showModal: false,
+      showAddModal: false,
+      showEditModal: false,
     };
   },
   computed: {
     ...mapState({
       selectedUserIds: (state) => state.userModule.selectedUserIds,
+      users: (state) => state.userModule.users,
+      selectedUser: (state) =>
+        state.userModule.users.find(
+          (user) => user.id === state.userModule.selectedUserIds[0]
+        ),
     }),
   },
   methods: {

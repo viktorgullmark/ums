@@ -3,7 +3,7 @@
     <div class="modal-mask">
       <div class="modal-wrapper">
         <div class="modal-container">
-          <div class="modal-header uppercase">Add New User</div>
+          <div class="modal-header uppercase">{{ title }}</div>
           <div class="modal-body">
             <form class="mx-auto my-10">
               <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -72,12 +72,13 @@
               variant="passive"
             />
             <ums-button
-              :on-click="addRow"
-              :button-text="'Add User'"
+              :on-click="edit ? editUser : addRow"
+              :button-text="edit ? 'Edit User' : 'Add User'"
               :isDisabled="!valid"
             >
               <template v-slot:leading>
-                <img src="@assets/icons/user-plus.svg" />
+                <img v-if="edit" src="@assets/icons/pencil-square.svg" />
+                <img v-else src="@assets/icons/user-plus.svg" />
               </template>
             </ums-button>
           </div>
@@ -94,15 +95,30 @@ import UmsInput from "@/Input";
 import UmsButton from "@/Button";
 
 export default {
-  name: "UmsAddUserModal",
+  name: "UmsAddEditUserModal",
+  props: {
+    initialUser: {
+      type: Object,
+      default: () => {
+        return {
+          firstName: "",
+          lastName: "",
+          birthDate: null,
+          quote: "",
+        };
+      },
+    },
+    edit: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return {
       user: {
-        firstName: "",
-        lastName: "",
-        birthDate: null,
-        quote: "",
+        ...this.initialUser,
       },
+      title: this.edit ? "Edit User" : "Add New User",
     };
   },
   components: {
@@ -129,9 +145,13 @@ export default {
       setProfession: "SET_PROFESSION",
       setCountry: "SET_COUNTRY",
     }),
-    ...mapActions(["addUser", "setProfession", "setCountry"]),
+    ...mapActions(["addUser", "updateUser", "setProfession", "setCountry"]),
     addRow() {
       this.addUser(this.user);
+      this.$emit("close");
+    },
+    editUser() {
+      this.updateUser(this.user);
       this.$emit("close");
     },
     selectProfession(profession) {
