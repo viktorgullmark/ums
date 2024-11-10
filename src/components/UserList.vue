@@ -51,7 +51,6 @@ export default {
   name: "UserList",
   data() {
     return {
-      showModal: false,
       allSelected: false,
       selected: [],
     };
@@ -81,9 +80,6 @@ export default {
     getCountryNameById(id) {
       const country = this.countries.find((country) => country.value === id);
       return country ? country.text : "";
-    },
-    toggleModal() {
-      this.showModal = !this.showModal;
     },
     toggleSelectAll() {
       this.selected = this.allSelected ? [] : this.users.map((user) => user.id);
