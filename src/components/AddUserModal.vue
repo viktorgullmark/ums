@@ -89,9 +89,9 @@
 
 <script>
 import { mapState, mapActions, mapMutations } from "vuex";
-import DropDown from "./DropDown";
-import InputComponent from "./Input";
-import ButtonComponent from "./Button";
+import DropDown from "@/DropDown";
+import InputComponent from "@/Input";
+import ButtonComponent from "@/Button";
 
 export default {
   name: "AddUserModal",

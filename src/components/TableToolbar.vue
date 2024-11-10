@@ -24,8 +24,8 @@
 </template>
 
 <script>
-import ButtonComponent from "./Button.vue";
-import AddUserModal from "./AddUserModal.vue";
+import ButtonComponent from "@/Button.vue";
+import AddUserModal from "@/AddUserModal.vue";
 import { mapActions } from "vuex";
 
 export default {

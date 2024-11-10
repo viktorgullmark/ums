@@ -11,9 +11,9 @@
 </template>
 
 <script>
-import UserTable from "./components/UserTable.vue";
-import NavBar from "./components/NavBar.vue";
-import TableToolbar from "./components/TableToolbar.vue";
+import UserTable from "@/UserTable.vue";
+import NavBar from "@/NavBar.vue";
+import TableToolbar from "@/TableToolbar.vue";
 
 export default {
   name: "App",
