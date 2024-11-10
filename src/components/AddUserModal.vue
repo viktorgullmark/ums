@@ -77,7 +77,7 @@
               :isDisabled="!valid"
             >
               <template v-slot:leading>
-                <img src="./../assets/icons/user-plus.svg" />
+                <img src="@assets/icons/user-plus.svg" />
               </template>
             </button-component>
           </div>

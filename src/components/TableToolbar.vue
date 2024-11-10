@@ -5,7 +5,7 @@
       :button-text="'Add User'"
     >
       <template v-slot:leading>
-        <img src="./../assets/icons/user-plus.svg" /> </template
+        <img src="@assets/icons/user-plus.svg" /> </template
     ></button-component>
     <button-component
       :on-click="removeSelected"
@@ -13,8 +13,7 @@
       :isDisabled="selected.length === 0"
       variant="danger"
     >
-      <template v-slot:leading>
-        <img src="./../assets/icons/trash.svg" /> </template
+      <template v-slot:leading> <img src="@assets/icons/trash.svg" /> </template
     ></button-component>
     <add-user-modal
       v-if="showModal"
