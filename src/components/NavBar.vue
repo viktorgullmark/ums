@@ -9,7 +9,7 @@
       >
       <div class="block w-auto" id="navbar-default">
         <ul
-          class="font-medium flex flex-col p-4 md:p-0 mt-4 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 border-0"
+          class="font-medium flex flex-row p-4 md:p-0 mt-4 rounded-lg bg-gray-50 md:space-x-8 md:mt-0 border-0"
         >
           <li v-for="link in links" :key="link.url">
             <a
