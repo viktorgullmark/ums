@@ -2,7 +2,7 @@
   <div>
     <label
       :for="id"
-      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      class="block mb-2 text-xs uppercase font-medium text-gray-900"
       v-text="label"
     />
     <div class="relative">

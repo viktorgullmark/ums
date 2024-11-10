@@ -10,7 +10,7 @@
     @click.prevent="onClick()"
   >
     <slot name="leading" />
-    <span>{{ buttonText }}</span>
+    <span class="uppercase text-xs font-semibold">{{ buttonText }}</span>
   </button>
 </template>
 

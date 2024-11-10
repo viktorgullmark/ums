@@ -3,7 +3,7 @@
     <div class="modal-mask">
       <div class="modal-wrapper">
         <div class="modal-container">
-          <div class="modal-header">Add New User</div>
+          <div class="modal-header uppercase">Add New User</div>
           <div class="modal-body">
             <form class="mx-auto my-10">
               <div class="grid grid-cols-1 gap-4 md:grid-cols-2">

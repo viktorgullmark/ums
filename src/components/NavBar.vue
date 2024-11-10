@@ -1,38 +1,23 @@
 <template>
-  <nav class="flex-no-wrap fixed top-0 w-full border-gray-200 dark:bg-gray-900">
+  <nav class="flex-no-wrap fixed top-0 w-full border-gray-200">
     <div
       class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
     >
       <span
-        class="self-center text-2xl font-semibold whitespace-nowrap text-white"
+        class="self-center font-semibold whitespace-nowrap text-white uppercase text-l"
         >{{ title }}</span
       >
-
       <div class="block w-auto" id="navbar-default">
         <ul
           class="font-medium flex flex-col p-4 md:p-0 mt-4 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 border-0"
         >
-          <li>
+          <li v-for="link in links" :key="link.url">
             <a
-              href="/"
-              class="block py-2 px-3 text-white md:p-0"
+              :href="link.url"
+              class="block py-2 px-3 text-white md:p-0 uppercase text-sm"
+              :class="{ disabled: link.url !== '/' }"
               aria-current="page"
-              >Users</a
-            >
-          </li>
-          <li>
-            <a href="/some" class="disabled block py-2 px-3 text-white md:p-0"
-              >Some</a
-            >
-          </li>
-          <li>
-            <a href="/other" class="disabled block py-2 px-3 text-white md:p-0"
-              >Other</a
-            >
-          </li>
-          <li>
-            <a href="/links" class="disabled block py-2 px-3 text-white md:p-0"
-              >Links</a
+              >{{ link.name }}</a
             >
           </li>
         </ul>
@@ -44,6 +29,16 @@
 <script>
 export default {
   name: "NavBar",
+  data() {
+    return {
+      links: [
+        { name: "Users", url: "/" },
+        { name: "Some", url: "/some" },
+        { name: "Other", url: "/other" },
+        { name: "Links", url: "/links" },
+      ],
+    };
+  },
   props: {
     title: {
       type: String,
