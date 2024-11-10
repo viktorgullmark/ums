@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import AddUserModal from "./components/Modal.vue";
+import AddUserModal from "./components/AddUserModal.vue";
 import UserList from "./components/UserList.vue";
 import ButtonComponent from "./components/Button.vue";
 import { mapActions } from "vuex";
