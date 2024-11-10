@@ -9,6 +9,15 @@ const actions = {
   removeUser({ commit }, user) {
     commit("REMOVE_USER", user.id);
   },
+  removeUsers({ commit }, userIds) {
+    commit("REMOVE_USERS", userIds);
+  },
+  selectUser({ commit }, user) {
+    commit("SELECT_USER", user.id);
+  },
+  deselectUser({ commit }, user) {
+    commit("DESELECT_USER", user.id);
+  },
 };
 
 export default actions;
