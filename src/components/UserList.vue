@@ -25,7 +25,12 @@
             v-model="selected"
           />
         </td>
-        <td class="px-6 py-3" v-text="user.firstName + ' ' + user.lastName" />
+        <th
+          scope="row"
+          class="px-6 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+          v-text="user.firstName + ' ' + user.lastName"
+        />
+
         <td class="px-6 py-3" v-text="user.birthDate" />
         <td class="px-6 py-3" v-text="userAge(user)" />
         <td
@@ -40,7 +45,6 @@
 </template>
 
 <script>
-// import User from './User';
 import { mapState, mapActions } from "vuex";
 
 export default {
