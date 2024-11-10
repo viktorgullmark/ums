@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+  <div>
     <label
       class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
       v-text="label"
@@ -7,7 +7,7 @@
     <div class="relative">
       <select
         id="grid-state"
-        class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+        class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 mb-3 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
         @change="changeSelect($event.target.value)"
       >
         <option :value="options[0].value" v-text="options[0].text" />
