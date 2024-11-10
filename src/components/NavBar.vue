@@ -33,7 +33,7 @@ nav {
   background: linear-gradient(
     90deg,
     rgba(0, 50, 51, 1) 0%,
-    rgba(3, 211, 197, 1) 100%
+    rgba(4, 129, 124, 1) 100%
   );
 }
 </style>

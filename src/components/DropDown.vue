@@ -1,13 +1,14 @@
 <template>
   <div>
     <label
-      class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+      :for="id"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
       v-text="label"
     />
     <div class="relative">
       <select
-        id="grid-state"
-        class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 mb-3 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+        :id="id"
+        class="bg-gray-50 appearance-none border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3"
         @change="changeSelect($event.target.value)"
       >
         <option :value="options[0].value" v-text="options[0].text" />
@@ -34,6 +35,9 @@
 export default {
   name: "DropDown",
   props: {
+    id: {
+      type: String,
+    },
     options: {
       type: Array,
       default: () => [

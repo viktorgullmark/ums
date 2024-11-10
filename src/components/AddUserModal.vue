@@ -6,76 +6,56 @@
           <div class="modal-header">Add New User</div>
           <div class="modal-body">
             <form class="mx-auto my-10">
-              <div class="grid grid-cols-1 md:grid-cols-2">
+              <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <div>
-                  <div class="w-full px-3 mb-6 md:mb-0">
-                    <label
-                      class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                      for="grid-first-name"
-                      v-text="'First Name'"
-                    />
-                    <input
-                      class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                  <div class="w-full mb-3">
+                    <input-component
+                      label="First Name"
                       id="grid-first-name"
-                      type="text"
                       placeholder="John"
                       v-model="user.firstName"
                     />
                   </div>
-                  <div class="w-full px-3 mb-6 md:mb-0">
-                    <label
-                      class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                      for="grid-last-name"
-                      v-text="'Last Name'"
-                    />
-                    <input
-                      class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                  <div class="w-full mb-3">
+                    <input-component
+                      label="Last Name"
                       id="grid-last-name"
-                      type="text"
                       placeholder="Doe"
                       v-model="user.lastName"
                     />
                   </div>
-                  <div class="w-full px-3 mb-6 md:mb-0">
-                    <label
-                      class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                      for="grid-date"
-                      v-text="'Date of Birth'"
-                    />
-                    <input
-                      class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                  <div class="w-full mb-3">
+                    <input-component
+                      label="Date of Birth"
                       id="grid-date"
                       type="date"
+                      placeholder="Date of Birth"
                       v-model="user.birthDate"
                     />
                   </div>
                 </div>
                 <div>
-                  <div class="w-full px-3 mb-6 md:mb-0">
-                    <label
-                      class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                      for="grid-quote"
-                      v-text="'Favorite Quote'"
-                    />
-                    <input
-                      class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                  <div class="w-full mb-3">
+                    <input-component
+                      label="Favorite Quote"
                       id="grid-quote"
-                      type="text"
                       placeholder="Asta la vista, baby!"
                       v-model="user.quote"
                     />
                   </div>
 
-                  <div class="w-full px-3 mb-6 md:mb-0">
+                  <div class="w-full mb-3">
                     <drop-down
+                      id="profession"
                       label="Profession"
                       :options="professions"
                       :changeSelect="selectProfession"
                     />
                   </div>
 
-                  <div class="w-full px-3 mb-6">
+                  <div class="w-full mb-3">
                     <drop-down
+                      id="country"
                       label="Country"
                       :options="countries"
                       :changeSelect="selectCountry"
@@ -110,6 +90,7 @@
 <script>
 import { mapState, mapActions, mapMutations } from "vuex";
 import DropDown from "./DropDown";
+import InputComponent from "./Input";
 import ButtonComponent from "./Button";
 
 export default {
@@ -127,6 +108,7 @@ export default {
   components: {
     DropDown,
     ButtonComponent,
+    InputComponent,
   },
   computed: {
     valid: function () {
@@ -165,7 +147,7 @@ export default {
 <style scoped>
 .modal-mask {
   position: fixed;
-  z-index: 9998;
+  z-index: 2000;
   top: 0;
   left: 0;
   width: 100%;
