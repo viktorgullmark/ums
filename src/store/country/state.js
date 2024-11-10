@@ -1,4 +1,5 @@
 const state = {
+  selectedCountryId: 1,
   countries: [
     {
       value: 1,
