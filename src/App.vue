@@ -55,6 +55,7 @@ export default {
     ...mapActions(["removeUsers"]),
     removeSelected() {
       this.removeUsers(this.selected);
+      this.selected = [];
     },
   },
 };
