@@ -1,7 +1,5 @@
 const mutations = {
-  SET_PROFESSION: (state, professionId) => {
-
-  },
+  SET_PROFESSION: (state, professionId) => {},
 };
 
 export default mutations;

@@ -7,17 +7,16 @@
 </template>
 
 <script>
-
 export default {
   props: {
     onClick: {
       type: Function,
-      default: () => '',
+      default: () => "",
     },
     buttonText: {
       type: String,
-      default: 'Button',
+      default: "Button",
     },
   },
-}
+};
 </script>

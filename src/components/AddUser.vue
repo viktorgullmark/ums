@@ -13,7 +13,7 @@
           type="text"
           placeholder="Enter First Name"
           v-model="firstName"
-        >
+        />
       </div>
       <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
         <label
@@ -27,7 +27,7 @@
           type="text"
           placeholder="Enter Last Name"
           v-model="firstName"
-        >
+        />
       </div>
       <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
         <label
@@ -40,7 +40,7 @@
           id="grid-date"
           type="date"
           v-model="birthDate"
-        >
+        />
       </div>
       <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
         <label
@@ -54,35 +54,29 @@
           type="text"
           placeholder="Enter Quote"
           v-model="quote"
-        >
+        />
       </div>
-      <drop-down
-        :options="professions"
-        :changeSelect="selectProfession"
-      />
+      <drop-down :options="professions" :changeSelect="selectProfession" />
       <drop-down />
     </div>
-    <button-component
-      :on-click="addUser"
-      :button-text="'Save User'"
-    />
+    <button-component :on-click="addUser" :button-text="'Save User'" />
   </form>
 </template>
 
 <script>
-import { mapState, mapActions, mapMutations } from 'vuex';
-import DropDown from './DropDown';
-import ButtonComponent from './Button';
+import { mapState, mapActions, mapMutations } from "vuex";
+import DropDown from "./DropDown";
+import ButtonComponent from "./Button";
 
 export default {
-  name: 'AddUser',
+  name: "AddUser",
   data() {
     return {
       user: {
-        firstName: '',
-        lastName: '',
+        firstName: "",
+        lastName: "",
         birthDate: null,
-        quote: '',
+        quote: "",
       },
     };
   },
@@ -92,22 +86,19 @@ export default {
   },
   computed: {
     ...mapState({
-      professions: state => state.professionModule.professions,
+      professions: (state) => state.professionModule.professions,
     }),
   },
   methods: {
     ...mapMutations({
-      setProfession: 'SET_PROFESSION',
+      setProfession: "SET_PROFESSION",
     }),
-    ...mapActions([
-      'addNewUsers',
-    ]),
+    ...mapActions(["addNewUsers"]),
     addUser() {
       this.addNewUser(this.user);
-    }
+    },
   },
-}
+};
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

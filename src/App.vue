@@ -6,14 +6,14 @@
 </template>
 
 <script>
-import AddUser from './components/AddUser.vue'
-import UserList from './components/UserList.vue'
+import AddUser from "./components/AddUser.vue";
+import UserList from "./components/UserList.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     AddUser,
     UserList,
   },
-}
+};
 </script>
