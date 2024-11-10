@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ums-nav-bar title="User Management System™" />
+    <ums-nav-bar title="User Management System" />
     <div class="p-2">
       <div
         class="mt-20 max-w-screen-xl flex flex-wrap items-center gap-4 mx-auto"
