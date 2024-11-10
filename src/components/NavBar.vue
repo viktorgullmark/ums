@@ -5,7 +5,7 @@
     >
       <span
         class="self-center text-2xl font-semibold whitespace-nowrap text-white"
-        >User Management System™</span
+        >{{ title }}</span
       >
 
       <div class="block w-auto" id="navbar-default">
@@ -25,6 +25,17 @@
     </div>
   </nav>
 </template>
+
+<script>
+export default {
+  name: "NavBar",
+  props: {
+    title: {
+      type: String,
+    },
+  },
+};
+</script>
 
 <style>
 nav {
