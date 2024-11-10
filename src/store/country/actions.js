@@ -1,6 +1,6 @@
 const actions = {
   setCountry({ commit }, countryId) {
-    commit("SET_COUNTRY", countryId);
+    commit("SET_COUNTRY", +countryId);
   },
 };
 

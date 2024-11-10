@@ -1,6 +1,6 @@
 const actions = {
   setProfession({ commit }, professionId) {
-    commit("SET_PROFESSION", professionId);
+    commit("SET_PROFESSION", +professionId);
   },
 };
 

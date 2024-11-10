@@ -103,7 +103,7 @@ export default {
       setProfession: "SET_PROFESSION",
       setCountry: "SET_COUNTRY",
     }),
-    ...mapActions(["addUser"]),
+    ...mapActions(["addUser", "setProfession", "setCountry"]),
     addRow() {
       this.addUser(this.user);
     },
