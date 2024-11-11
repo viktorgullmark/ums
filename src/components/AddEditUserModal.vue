@@ -48,6 +48,7 @@
                     <ums-drop-down
                       id="profession"
                       label="Profession"
+                      :initial="user.profession_id"
                       :options="professions"
                       :changeSelect="selectProfession"
                     />
@@ -57,6 +58,7 @@
                     <ums-drop-down
                       id="country"
                       label="Country"
+                      :initial="user.country_id"
                       :options="countries"
                       :changeSelect="selectCountry"
                     />

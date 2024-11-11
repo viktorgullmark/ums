@@ -13,6 +13,7 @@
       >
         <option
           v-for="option in options"
+          :selected="option.value === initial"
           :value="option.value"
           v-text="option.text"
           :key="option.value"
@@ -41,6 +42,10 @@ export default {
   props: {
     id: {
       type: String,
+    },
+    initial: {
+      type: Number,
+      default: -1,
     },
     options: {
       type: Array,
